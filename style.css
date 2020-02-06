@@ -43,7 +43,7 @@ ol, ul {
 /* ----- Global Rules ----- */
 
 :root {
-    
+    --pageheight: 100vh;
 }
 
 /* ----- Mobile-first  ----- */
