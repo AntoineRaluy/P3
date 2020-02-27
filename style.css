@@ -50,5 +50,66 @@ ol, ul {
 
  @media all and (max-width: 415px) { 
 
+#slider {
+    width: 90%;
+    height: 250px;
+    margin: 20px auto;
+    background-color: teal;
+    position: relative;
+}
+
+.innerSlide {
+    display: none;
+}
+
+.innerSlide img {
+    width: 100%;
+}
+
+.fas {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+}
+
+.fa-chevron-circle-right {
+    right: 0;
+  }
+
+.fa-pause-circle, .fa-play-circle {
+  top: 90%;
+  padding: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.fa-play-circle {
+    margin-left: 20px;
+}
+
+#map {
+    width: 90vw;
+    height: 300px;
+    margin: 35px auto;
+}
+
+#station-status {
+    background-color: rosybrown;
+    width: 90%;
+    height: 250px;
+    margin: 20px auto;
+}
+
+
+
+#booking-details {
+    width: 90%;
+    height: 80px;
+    margin: 20px auto;
+    background-color: bisque; 
+}
 
  }
