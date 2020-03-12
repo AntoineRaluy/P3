@@ -1,7 +1,7 @@
 let slideIndex = 1;
 
 const $prevBtn = document.querySelector('.fa-chevron-circle-left'); 
-const $nextBtn = document.querySelector('.fa-chevron-circle-rightnext'); 
+const $nextBtn = document.querySelector('.fa-chevron-circle-right'); 
 const $pauseBtn = document.querySelector('.fa-pause-circle'); 
 const $playBtn = document.querySelector('.fa-play-circle'); 
 
