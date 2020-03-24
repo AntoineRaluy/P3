@@ -39,7 +39,7 @@ export default class Slideshow {
 
     autoSlide() {
         this.intervalSlide = 0;
-        this.intervalSlide = setInterval(() => this.nextSlide(), 1500);
+        this.intervalSlide = setInterval(() => this.nextSlide(), 5000);
     }
 
     nextSlide() {

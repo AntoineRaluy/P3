@@ -101,6 +101,12 @@ ol, ul {
     margin: 20px auto;
 }
 
+#station-infos {
+    margin: 15px;
+    padding: 10px; 
+    border: blue solid 2px;
+}
+
 #booking-details {
     width: 90%;
     height: 80px;
