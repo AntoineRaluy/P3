@@ -224,7 +224,7 @@ header {
     left: -1.8rem;
 }
 
-#slider .fa-pause-circle, .fa-play-circle {
+#slider .fa-pause-circle, #slider .fa-play-circle {
   top: 100%;
   left: 50%;
   transform: translate(-50%, 0);
