@@ -44,74 +44,396 @@ ol, ul {
 
 :root {
     --pageheight: 100vh;
+    --blue: #5d9cec;
+    --green: #81b53e;
+}
+
+html {
+    font-size: 62.5%;   /* 1rem = 10px */
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    font-size: 1.65rem;
+    line-height: 1.6;
+    background-color: #FFFAF0;
+}
+
+h1 {
+    font-family: 'Niconne', cursive;
+    font-size: 4rem;
+    text-shadow: 2px 3px 1px lightgrey;
+    color: #000080;
+}
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--blue);
+    font-weight: 600;
+    text-decoration: dotted underline;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    color: lightgrey;
+    text-align: left;
+    font-size: 2rem;
+    text-decoration: dotted underline;
+    margin-bottom: 2rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.app-name {
+    font-family: 'Niconne', cursive;
+    font-size: 3.5rem;
+    text-shadow: 1px 1px 1px lightgrey;
+}
+
+strong {
+    font-weight: 700;
+}
+
+img {
+    width: 100%;
 }
 
 /* ----- Mobile-first  ----- */
 
- @media all and (max-width: 415px) { 
+header {
+    width: 100%;
+}
+
+.title-logo {
+    height: 11vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+#logo {
+    width: initial;
+    height: 100%;
+    padding: 0.5rem 2rem 0 7rem;
+}
+
+.slogan {
+    text-align: center;
+    font-style: italic;
+    margin-top: 1.3rem;
+    color: rgba(0, 0, 0, 0.85)
+}
 
 #slider {
-    width: 90%;
+    width: 85%;
     height: 250px;
-    margin: 20px auto;
+    margin: 2rem auto;
     position: relative;
 }
 
-#innerSlide {
+.howto {
+    display: none;
     width: 100%;
+    height: 100%;
     position: absolute;
-    z-index: 1;
+    z-index: 2;
+    color: var(--green);
+    text-align: center;
+    padding: 1rem;
+    background-color: #FBFCFA;
+    border: solid 1px #CECECE ;
+    border-radius: 3px;
 }
 
-.fas {
+.howto strong {
+    color: #cd384d;
+}
+
+.ht1 {
+    display: block;
+}
+
+.ht1 img {
+    width: 80px;
+    margin-bottom: 1.6rem;
+}
+
+.ht1 .app-name {
+    color: var(--green);
+}
+
+.ht2 {
+    font-size: 1.5rem;
+}
+
+.ht2 img {
+    width: 20px;
+    height: 30px;
+    margin-right: 0.6rem;
+}
+
+.green-mark, .blue-mark, .red-mark {
+    display: flex;
+    justify-content: start;
+    text-align: left;
+    padding: 0.8rem
+}
+
+.ht4 p {
+    padding-top: 1rem;
+}
+
+.ht5 p {
+    padding-top: 3rem;
+    line-height: 6rem;
+}
+
+.ht5 .app-name {
+    color: var(--blue);
+    font-size: 5rem;
+}
+
+#slider .fas {
   cursor: pointer;
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   top: 50%;
   width: auto;
-  margin-top: -22px;
-  padding: 16px;
+  font-size: 3rem;
+  color: #CECECE;
+  background-color: #FBFCFA;
+  margin-top: -1.5rem;
+  border-radius: 50%;
 }
 
-.fa-chevron-circle-right {
-    right: 0;
+#slider .fas:hover {
+    color: darkgrey;
 }
 
-.fa-pause-circle, .fa-play-circle {
-  top: 90%;
-  padding: 10px;
+#slider .fa-chevron-circle-right {
+    right: -1.8rem;
+}
+
+#slider .fa-chevron-circle-left {
+    left: -1.8rem;
+}
+
+#slider .fa-pause-circle, .fa-play-circle {
+  top: 100%;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
-.fa-play-circle {
+#slider .fa-play-circle {
     display: none;
 }
 
+#map-stations {
+    width: 100%;
+    text-align: center;
+}
+
 #map {
-    width: 90vw;
-    height: 300px;
-    margin: 35px auto;
-}
-
-#station-status {
-    background-color: rosybrown;
     width: 90%;
-    height: 250px;
-    margin: 20px auto;
+    height: 300px;
+    margin: 3rem auto;
+    border: solid 1px #CECECE ;
+    border-radius: 3px;
+    z-index: 1;
+}
+    
+#station-infos {
+    width: 90%;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 3px;
+    border: groove 2px #C0C0C0;
+    display: none;    
 }
 
-#station-infos {
-    margin: 15px;
-    padding: 10px; 
-    border: blue solid 2px;
+.infostats {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 #booking-details {
     width: 90%;
-    height: 80px;
-    margin: 20px auto;
-    background-color: bisque; 
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #ffe4c4; 
+    border: solid 1px #CECECE ;
+    border-radius: 3px;
+    position: relative;
 }
 
- }
+#booking-details form div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+#booking-details form input {
+    border: solid 1px grey;
+    border-radius: 3px;
+}
+
+#booking-details form div input {
+    width: 60%;
+    margin-right: 1rem;
+    padding-left: 1.5rem;
+}
+
+#book-button {  
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+}
+
+#book-button:hover {
+    cursor: pointer;
+    border: solid 1px var(--blue);
+    background-color: #FBFCFA;
+}
+
+.lightbox-sign {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.fa-times {
+    color:lightgrey;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+    padding: 1rem;
+    font-size: 2.5rem;
+}
+
+.fa-times:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.sign-form {
+    margin: 30% 3rem;
+}
+
+.subtext input {
+    display: inline-block;
+    margin: 1rem;
+    width: 10rem;
+    padding: 0.7rem;
+    border-radius: 2px;
+}
+
+#bt-clear:hover {
+    color: maroon;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+.btcheck:hover {
+    color: seagreen;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+}
+
+#canvas {
+    width: 100%;
+    height: 200px;
+    margin-top: 1rem;
+    background-color: white;
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+#booking-status {
+    margin-top: 7rem;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#booking-status hr {
+    margin-bottom: 1.5rem;
+}
+
+#booking-status .infouser, #time {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: darkcyan;
+}
+
+.fa-bicycle {
+    position: absolute;
+    z-index: 2;
+    top:-1.2rem;    
+    animation: 120s linear progress forwards;
+    color: navy;
+    text-shadow: olive 1px 1px 1px;
+}
+
+.anim {
+    position: relative;
+}
+
+.dline {
+    z-index: 1;
+    border-bottom: dashed 1px black;
+    animation: 120s linear progress2 forwards;
+}
+
+@keyframes progress { /* left to rigth - full blue */
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: 95%;
+    }
+}
+
+    @keyframes progress2 { /* left to rigth - full blue */
+        from {
+            width: 0%;
+        }
+    
+        to {
+            width: 95%;
+        }
+}
+
+ @media all and (min-width: 800px) { 
+
+    h1 {
+        font-size: 9rem;
+    }
+
+    #logo {
+        margin-left: 6rem;
+    }
+
+    #slider {
+        height: 400px;
+    }
+
+    #map {
+        height: 500px;
+    }
+
+  }
