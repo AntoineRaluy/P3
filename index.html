@@ -4,28 +4,71 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Location de vélos </title>
+    <title>Be·Cycle - Lyon. Trouvez le vélo qu'il vous faut. </title>
     <meta name="description"
-        content="L'application de location de vélos de référence.">
+        content="Be·Cycle à Lyon. L'application Be·Cycle vous propose des réservations de vélo parmi les nombreuses stations de la ville.">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Niconne&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
-    <script src="./js/map.js" async></script>
     <script src="main.js" type="module" async></script>
     </head>
 
 <body>
+    <header>
+        <div class="title-logo">
+        <h1>Be·Cycle</h1>
+        <img id="logo" src="images/location.png" alt="logo">
+        </div>
+        <hr>
+        <p class="slogan">"Avec <strong>Be·Cycle</strong>, vivez la liberté à deux roues !"</p> 
+    </header>
 
     <!-- Diaporama -->
     <div id="slider">
-        <img id="innerSlide" src="images/bike1.jpg">
         <i class="fas fa-chevron-circle-left"></i>
         <i class="fas fa-chevron-circle-right"></i>
         <i class="fas fa-pause-circle"></i>
         <i class="fas fa-play-circle"></i>
+    
+    <div class="howto ht1">
+        <h2>Bienvenue sur <span class="app-name">Be.Cycle</span> !</h2>
+        <img src="/images/location.png" alt="logo">
+        <p>Découvrez comment réserver un vélo.</p>
     </div>
+    <div class="howto ht2">
+        <h2>Sélectionner une station</h2>
+        <p>Choisissez votre station sur la carte interactive.</p>
+        <div class="green-mark">
+            <img src="/images/marker-icon-green.png" alt="green marker">
+            <p>Station <strong>ouverte</strong>, avec des emplacements libres.</p>
+        </div>
+        <div class="blue-mark">
+            <img src="/images/marker-icon-blue.png" alt="blue marker">
+            <p>Station <strong>ouverte</strong>, sans places disponibles.</p>
+        </div>
+        <div class="red-mark">
+            <img src="/images/marker-icon-red.png" alt="red marker">
+            <p>Station <strong>fermée</strong>.</p>
+        </div>
+    </div>
+    <div class="howto ht3">
+        <h2>Réservation</h2>
+        <br><p>Renseignez vos <strong>nom</strong> et <strong>prénom</strong> dans les champs indiqués.</p>
+        <br><p>Puis <strong>signez</strong> pour confirmer la réservation.</p>
+    </div>
+    <div class="howto ht4">
+        <h2>Informations</h2>
+        <p>Votre réservation restera valide durant : <br> <strong>20 minutes</strong>.</p>
+        <p>Vous ne pouvez réserver qu'un vélo à la fois.</p>
+        <p><strong>Ne fermez pas votre navigateur.</strong></p>
+    </div>
+    <div class="howto ht5">
+        <p>Merci d'avoir choisi <br> <span class="app-name">Be.Cycle</span></p>
+    </div>
+</div>
 
     <!-- Carte - Leaflet -->
     <div id="map-stations">
@@ -35,7 +78,32 @@
 
     <!-- Infos Réservations -->
     <div id="booking-details">
-        <input type="text">
+    <form class="booking-form">
+        <div class="lastname-field">
+        <label for="user-lastname">Nom :</label>
+        <input id="user-lastname" type="text" placeholder="Nom" required />
+        </div>
+        <div class="firstname-field">
+        <label for="user-firstname">Prénom :</label>
+        <input id="user-firstname" type="text" placeholder="Prénom" required />
+        </div>
+        <input type="submit" id="book-button" value="Réserver" />
+    </form>
+
+    <div class="lightbox-sign">
+    <div class="sign-form">
+        <i class="fas fa-times"></i>
+            <div class="subtext">
+                <h3>Signez pour confirmer :</h3>                
+                <input type="button" id="bt-clear" value="✘ Effacer">
+                <input type="button" id="bt-check" value="✔ Valider" disabled>
+            </div>
+            <canvas id="canvas"></canvas>
+        </div>
+    </div> 
+        
+    <div id="booking-status"></div>
+
     </div>
 
 </body>
