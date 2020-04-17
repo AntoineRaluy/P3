@@ -5,7 +5,7 @@ export default class BikeMap {
         this.urlData = 'https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=0bfc09ea2231530610e8ebd057fa19cc18539930';
         this.leafletMap = L.map(this.$mapElement).setView([45.75, 4.85], 15);
         this.leafletMap.scrollWheelZoom.disable();
-        this.leafletMap.touchZoom.disable();
+        this.leafletMap.dragging.disable();
         this.leafletMap.on('focus', () => { 
             this.leafletMap.scrollWheelZoom.enable(); 
             });
@@ -13,10 +13,10 @@ export default class BikeMap {
             this.leafletMap.scrollWheelZoom.disable(); 
             });
         this.leafletMap.on('touchstart', () => { 
-            this.leafletMap.touchZoom.enable();
+            this.leafletMap.dragging.enable();
             });
         this.leafletMap.on('touchleave', () => { 
-            this.leafletMap.touchZoom.disable();
+            this.leafletMap.dragging.disable();
             });
 
         this.leafletIcon = L.Icon.extend({
