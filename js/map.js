@@ -65,7 +65,6 @@ export default class BikeMap {
     displayStation(station) {
         const $infoStation = document.querySelector('#station-infos');
         $infoStation.style.display = "inline-block";
-        $infoStation.scrollIntoView();
         let status = station.status;
         sessionStorage.setItem('stationname', station.name);
         if (status === 'OPEN') {
@@ -89,5 +88,6 @@ export default class BikeMap {
                                     <li><span class="infostats">Vélo(s) disponible(s)</span> : ${station.bikes}</li>
                                     <li><span class="infostats">Emplacement(s) libre(s)</span> : ${station.stands}</li>
                                 </ul>`;
+        $infoStation.scrollIntoView();
     }
 }
