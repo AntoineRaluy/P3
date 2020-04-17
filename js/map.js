@@ -6,19 +6,11 @@ export default class BikeMap {
         this.leafletMap = L.map(this.$mapElement).setView([45.75, 4.85], 15);
         this.leafletMap.scrollWheelZoom.disable();
         this.leafletMap.dragging.disable();
+        this.leafletMap.touchZoom.enable();
         this.leafletMap.on('focus', () => { 
-            this.leafletMap.scrollWheelZoom.enable(); 
-            });
+            this.leafletMap.scrollWheelZoom.enable()});
         this.leafletMap.on('mouseout', () => { 
-            this.leafletMap.scrollWheelZoom.disable(); 
-            });
-        this.leafletMap.on('touchstart', () => { 
-            this.leafletMap.dragging.enable();
-            });
-        this.leafletMap.on('touchleave', () => { 
-            this.leafletMap.dragging.disable();
-            });
-
+            this.leafletMap.scrollWheelZoom.disable()});
         this.leafletIcon = L.Icon.extend({
             options: {
                 shadowUrl: 'images/marker-shadow.png',
