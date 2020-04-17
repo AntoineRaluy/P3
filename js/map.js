@@ -8,11 +8,12 @@ export default class BikeMap {
         this.leafletMap.touchZoom.disable();
         this.leafletMap.on('focus', () => { 
             this.leafletMap.scrollWheelZoom.enable(); 
-            this.leafletMap.touchZoom.enable();
             });
         this.leafletMap.on('mouseout', () => { 
             this.leafletMap.scrollWheelZoom.disable(); 
-            this.leafletMap.touchZoom.disable();
+            });
+        this.leafletMap.on('touchstart', () => { 
+            this.leafletMap.touchZoom.enable();
             });
         this.leafletMap.on('touchleave', () => { 
             this.leafletMap.touchZoom.disable();
