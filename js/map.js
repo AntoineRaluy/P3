@@ -8,12 +8,10 @@ export default class BikeMap {
         this.leafletMap.dragging.disable();
         this.leafletMap.on('focus', () => { 
             this.leafletMap.scrollWheelZoom.enable(); 
+            this.leafletMap.dragging.enable();
             });
         this.leafletMap.on('mouseout', () => { 
             this.leafletMap.scrollWheelZoom.disable(); 
-            });
-        this.leafletMap.on('touchstart', () => { 
-            this.leafletMap.dragging.enable();
             });
         this.leafletMap.on('touchleave', () => { 
             this.leafletMap.dragging.disable();
