@@ -1,12 +1,14 @@
 export default class CanvasObject {
     constructor(canvasPosition) { //Paramètres du canvas
         this.$canvas = document.querySelector(canvasPosition);
-        this.$checkButton = document.getElementById("bt-check");
-        this.$clearButton = document.getElementById("bt-clear");
+        this.$checkButton = document.querySelector("#bt-check");
+        this.$clearButton = document.querySelector("#bt-clear");
         this.$checkButton.classList.remove('btcheck');
+
         this.ctx = this.$canvas.getContext('2d');
         this.ctx.strokeStyle = '#000000';
         this.ctx.lineWidth = 3;
+
         this.draw = false;
         this.mousePosition = {
             x: 0,
@@ -33,25 +35,29 @@ export default class CanvasObject {
             this.canvasResult()
         });
 
-        document.addEventListener("mouseup", (e) => {
+        this.$canvas.addEventListener("mouseup", (e) => {
             this.draw = false;
         });
 
+//         oCanvas.addEventListener("touchstart", downDrawligne);
+//   oCanvas.addEventListener("touchend", upDrawligne);
+//   oCanvas.addEventListener("touchmove", moveDrawligne); 
+
 
         // Stop scrolling (touch)
-        document.body.addEventListener("touchstart", (e) => {
+        this.$canvas.addEventListener("touchstart", (e) => {
             if (e.target == this.canvas) {
                 e.preventDefault();
             }
         });
 
-        document.body.addEventListener("touchend", (e) => {
+        this.$canvas.addEventListener("touchend", (e) => {
             if (e.target == this.canvas) {
                 e.preventDefault();
             }
         });
 
-        document.body.addEventListener("touchmove", (e) => {
+        this.$canvas.addEventListener("touchmove", (e) => {
             if (e.target == this.canvas) {
                 e.preventDefault();
             }
@@ -66,7 +72,7 @@ export default class CanvasObject {
                 clientX: touch.clientX,
                 clientY: touch.clientY
             });
-            this.canvas.dispatchEvent(mouseEvent);
+            this.$canvas.dispatchEvent(mouseEvent);
         });
 
         this.$canvas.addEventListener("touchmove", (e) => {
@@ -75,12 +81,12 @@ export default class CanvasObject {
                 clientX: touch.clientX,
                 clientY: touch.clientY
             });
-            this.canvas.dispatchEvent(mouseEvent);
+            this.$canvas.dispatchEvent(mouseEvent);
         });
 
         this.$canvas.addEventListener("touchend", (e) => {
             let mouseEvent = new MouseEvent("mouseup", {});
-            this.canvas.dispatchEvent(mouseEvent);
+            this.$canvas.dispatchEvent(mouseEvent);
         });
 
 

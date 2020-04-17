@@ -42,11 +42,12 @@ export default class Booking {
                                 <i class="fas fa-bicycle"></i>
                                 <div class="dline"></div>
                                 </div>`;
+        this.$infoBooking.scrollIntoView();
         this.bookingTime();    
     }
 
     bookingTime() {
-        const twentyMinutes = 60 * 0.1;
+        const twentyMinutes = 60 * 20;
         const $timeDisplay = document.querySelector('#time');
         this.startTimer(twentyMinutes, $timeDisplay);
     }
@@ -66,6 +67,7 @@ export default class Booking {
                 timer = duration;
                 sessionStorage.clear();
                 this.$infoBooking.innerHTML =``;
+                this.$userForm.style.display = "none";
                 clearInterval(interval);
             }
         }, 1000);

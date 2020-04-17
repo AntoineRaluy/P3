@@ -252,6 +252,7 @@ header {
     width: 90%;
     text-align: left;
     padding: 1rem;
+    margin-bottom: 2rem;
     border-radius: 3px;
     border: groove 2px #C0C0C0;
     display: none;    
@@ -264,12 +265,14 @@ header {
 
 #booking-details {
     width: 90%;
-    margin: 2rem auto;
+    margin: auto;
+    margin-bottom: 2rem;
     padding: 1.5rem;
     background-color: #ffe4c4; 
     border: solid 1px #CECECE ;
     border-radius: 3px;
     position: relative;
+    display: none;
 }
 
 #booking-details form div {
@@ -379,43 +382,41 @@ header {
     color: darkcyan;
 }
 
+.anim {
+    position: relative;
+}
+
 .fa-bicycle {
     position: absolute;
     z-index: 2;
     top:-1.2rem;    
-    animation: 120s linear progress forwards;
     color: navy;
     text-shadow: olive 1px 1px 1px;
-}
-
-.anim {
-    position: relative;
+    animation: 1200s linear bikerun forwards;
 }
 
 .dline {
     z-index: 1;
     border-bottom: dashed 1px black;
-    animation: 120s linear progress2 forwards;
+    animation: 1200s linear trackline forwards;
 }
 
-@keyframes progress { /* left to rigth - full blue */
+@keyframes bikerun { /* left to rigth bicycle */
     from {
         left: 0%;
     }
-
     to {
         left: 95%;
     }
 }
 
-    @keyframes progress2 { /* left to rigth - full blue */
-        from {
-            width: 0%;
-        }
-    
-        to {
-            width: 95%;
-        }
+@keyframes trackline { /* left to rigth dashed line */
+    from {
+        width: 0%;
+    }
+    to {
+        width: 95%;
+    }
 }
 
  @media all and (min-width: 800px) { 
