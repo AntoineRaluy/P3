@@ -59,6 +59,11 @@ body {
     background-color: #FFFAF0;
 }
 
+.stopscroll {
+    height: 100%;
+    overflow: hidden;
+}
+
 h1 {
     font-family: 'Niconne', cursive;
     font-size: 4rem;

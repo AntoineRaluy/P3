@@ -13,15 +13,18 @@ export default class Booking {
             sessionStorage.setItem('lastname', this.$userLastName);
             sessionStorage.setItem('firstname', this.$userFirstName); 
             this.$signingStep.style.display = "inline-block";
+            document.body.classList.add("stopscroll");
             });
 
         this.$checkButton.addEventListener("click", () => {
             this.displayBooking();   
             this.$signingStep.style.display = "none";
+            document.body.classList.remove("stopscroll");
             });
 
         this.$closeBtn.addEventListener('click', () => {
             this.$signingStep.style.display = "none";
+            document.body.classList.remove("stopscroll");
             });
             
         document.querySelector('#user-lastname').value = localStorage.getItem('lastname');

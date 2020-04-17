@@ -141,5 +141,6 @@ export default class CanvasObject {
         this.$canvas.width = this.$canvas.width;
         this.ctx.lineWidth = 3;
     }
+
 }
 
