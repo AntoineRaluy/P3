@@ -19,11 +19,9 @@ export default class BikeMap {
                 shadowSize: [41, 41]
             }
         });
-
         this.blueIcon = new this.leafletIcon({iconUrl: 'images/marker-icon-2x-blue.png'});
         this.redIcon = new this.leafletIcon({iconUrl: 'images/marker-icon-2x-red.png'});   
         this.greenIcon = new this.leafletIcon({iconUrl: 'images/marker-icon-2x-green.png'});
-
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYW50b2luZXJhIiwiYSI6ImNrNnh3MnJuazBsYWUzcWp6d3lyNzdtODMifQ.muiq1cgk5b2t5vWwWmpHlA', {
             attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
@@ -31,13 +29,12 @@ export default class BikeMap {
             tileSize: 512,
             zoomOffset: -1
             }).addTo(this.leafletMap);
-    
         this.locData();
     }
 
     locData = async () => {  
         let markerIcon = this.blueIcon;
-        const response = await fetch(this.urlData);
+        const response = await fetch(this.urlData);     // get stations from JC Decaux
         const locStation = await response.json();        
         locStation.forEach(bikeStation => {             
             let stationInfos = {
@@ -66,7 +63,6 @@ export default class BikeMap {
     displayStation(station) {
         const $infoStation = document.querySelector('#station-infos');
         $infoStation.style.display = "inline-block";
-        
         let status = station.status;
         sessionStorage.setItem('stationname', station.name);
         if (status === 'OPEN') {

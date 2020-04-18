@@ -16,7 +16,6 @@ export default class Booking {
             this.$signingStep.style.display = "inline-block";
             document.body.classList.add("stopscroll");
             });
-
         this.$checkButton.addEventListener("click", () => {
             this.displayBooking();   
             this.$userForm.style.display = "none";
@@ -24,12 +23,10 @@ export default class Booking {
             this.$stationInfos.style.textAlign = "center";
             document.body.classList.remove("stopscroll");
             });
-
         this.$closeBtn.addEventListener('click', () => {
             this.$signingStep.style.display = "none";
             document.body.classList.remove("stopscroll");
             });
-            
         document.querySelector('#user-lastname').value = localStorage.getItem('lastname');
         document.querySelector('#user-firstname').value = localStorage.getItem('firstname'); 
     }
@@ -61,16 +58,14 @@ export default class Booking {
 
     startTimer(duration, display) {
         let timer = duration;
-        let minutes;
-        let seconds;
-
+        let minutes, seconds;
         const interval = setInterval(() => {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-            minutes = minutes < 10 ? `0${minutes}` : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-            display.textContent = minutes + ":" + seconds;             
-            if (--timer< 0) {
+            minutes = Math.trunc(timer / 60);       // keep integer part
+            seconds = timer % 60;                   // modulo 60
+            minutes = minutes < 10 ? `0${minutes}` : minutes;       // display 0 if <10
+            seconds = seconds < 10 ? `0${seconds}` : seconds;
+            display.textContent = `${minutes}:${seconds}`;             
+            if (--timer < 0) {
                 timer = duration;
                 sessionStorage.clear();
                 this.$infoBooking.innerHTML =``;

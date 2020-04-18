@@ -1,16 +1,13 @@
 export default class CanvasObject {
     constructor(canvasPosition) { 
         this.$canvas = document.querySelector(canvasPosition);
-
         this.$checkButton = document.querySelector("#bt-check");
         this.$clearButton = document.querySelector("#bt-clear");
         this.$checkButton.classList.remove('btcheck');
-
         this.ctx = this.$canvas.getContext('2d');
         this.ctx.strokeStyle = '#000000';
         this.ctx.lineWidth = 3;
-
-        if (window.matchMedia("(min-width: 1024px)").matches) {
+        if (window.matchMedia("(min-width: 1024px)").matches) {     // adjusts canvas with MQs
             this.$canvas.width = 800;
             this.$canvas.height = 300;
         } else if (window.matchMedia("(min-width: 800px)").matches) {
@@ -20,58 +17,42 @@ export default class CanvasObject {
             this.$canvas.width = 300;
             this.$canvas.height = 200;
         }
-
         this.draw = false;
-        this.mousePosition = {
-            x: 0,
-            y: 0
-        };
+        this.mousePosition = {x: 0, y: 0};
         this.lastPosition = this.mousePosition;
-
         this.evenements();
     }
-
     
     evenements() {
-        //Souris
-        this.$canvas.addEventListener("mousedown", (e) => {
+            this.$canvas.addEventListener("mousedown", (e) => {     // Mouse config
             this.draw = true;
             this.$checkButton.disabled = false;
             this.$checkButton.classList.add('btcheck');
             this.lastPosition = this.getMposition(e);
         });
-
         this.$canvas.addEventListener("mousemove", (e) => {
             this.mousePosition = this.getMposition(e);
-            this.canvasResult()
+            this.canvasResult();
         });
-
         this.$canvas.addEventListener("mouseup", (e) => {
             this.draw = false;
         });
-
-        // Stop scrolling (touch)
-        this.$canvas.addEventListener("touchstart", (e) => {
-            if (e.target == this.canvas) {
+        this.$canvas.addEventListener("touchstart", (e) => {    // Stop touchpad scrolling
+            if (e.target == this.$canvas) {
                 e.preventDefault();
             }
         });
-
         this.$canvas.addEventListener("touchend", (e) => {
-            if (e.target == this.canvas) {
+            if (e.target == this.$canvas) {
                 e.preventDefault();
             }
         });
-
         this.$canvas.addEventListener("touchmove", (e) => {
-            if (e.target == this.canvas) {
+            if (e.target == this.$canvas) {
                 e.preventDefault();
             }
-        });
-
-
-        // Touchpad
-        this.$canvas.addEventListener("touchstart", (e) => {
+        });        
+        this.$canvas.addEventListener("touchstart", (e) => {       // Touchpad config
             this.mousePosition = this.getTposition(e);
             let touch = e.touches[0];
             let mouseEvent = new MouseEvent("mousedown", {
@@ -80,7 +61,6 @@ export default class CanvasObject {
             });
             this.$canvas.dispatchEvent(mouseEvent);
         });
-
         this.$canvas.addEventListener("touchmove", (e) => {
             let touch = e.touches[0];
             let mouseEvent = new MouseEvent("mousemove", {
@@ -89,30 +69,23 @@ export default class CanvasObject {
             });
             this.$canvas.dispatchEvent(mouseEvent);
         });
-
         this.$canvas.addEventListener("touchend", (e) => {
             let mouseEvent = new MouseEvent("mouseup", {});
             this.$canvas.dispatchEvent(mouseEvent);
-        });
-
-
-        // Effacer - Valider
-        this.$clearButton.addEventListener("click", (e) => {
-            this.clearCanvas()
+        });      
+        this.$clearButton.addEventListener("click", (e) => {    // Clear signature
+            this.clearCanvas();
             this.$checkButton.disabled = true;
             this.$checkButton.classList.remove('btcheck');
         });
-
-        this.$checkButton.addEventListener("click", () => {
-            this.clearCanvas()
+        this.$checkButton.addEventListener("click", () => {     // Check signature
+            this.clearCanvas();
             this.$checkButton.disabled = true;
             this.$checkButton.classList.remove('btcheck');
         });
-
     }
 
-    // Renvoie les coordonnées de la souris 
-    getMposition(mouseEvent) {
+    getMposition(mouseEvent) {      // Get mouse position
         if (this.draw) {
             const oRect = this.$canvas.getBoundingClientRect();
             return {
@@ -122,8 +95,7 @@ export default class CanvasObject {
         }
     }
 
-    // Renvoie les coordonnées du pad 
-    getTposition(touchEvent) {
+    getTposition(touchEvent) {      // Get touchpad position
         const oRect = this.$canvas.getBoundingClientRect();
         return {
             x: touchEvent.touches[0].clientX - oRect.left,
@@ -131,8 +103,7 @@ export default class CanvasObject {
         };
     }
 
-    // Dessin du canvas
-    canvasResult() {
+    canvasResult() {             // Draw in canvas
         if (this.draw) {
             this.ctx.beginPath();
             this.ctx.moveTo(this.lastPosition.x, this.lastPosition.y);
@@ -142,8 +113,7 @@ export default class CanvasObject {
         }
     };
 
-    // Vide le dessin du canvas
-    clearCanvas() {
+    clearCanvas() {            
         this.$canvas.width = this.$canvas.width;
         this.ctx.lineWidth = 3;
     }

@@ -5,7 +5,7 @@ export default class Slideshow {
         this.$nextBtn = document.querySelector('.fa-chevron-circle-right');
         this.$pauseBtn = document.querySelector('.fa-pause-circle');
         this.$playBtn = document.querySelector('.fa-play-circle');
-        this.howtoArray = document.querySelectorAll('.howto');
+        this.$howtoArray = document.querySelectorAll('.howto');
         this.indexSlide = 0;
         this.autoSlide();
         this.$prevBtn.addEventListener('click', () => this.prevSlide());
@@ -37,23 +37,22 @@ export default class Slideshow {
     }
 
     nextSlide() {
-        this.howtoArray[this.indexSlide].style.display="none";
+        this.$howtoArray[this.indexSlide].style.display="none";
         this.indexSlide++;
-        if (this.indexSlide >= this.howtoArray.length) {    
+        if (this.indexSlide >= this.$howtoArray.length) {    
             this.indexSlide = 0;
         }
-        this.howtoArray[this.indexSlide].style.display="block"; 
+        this.$howtoArray[this.indexSlide].style.display="block"; 
     }
 
     prevSlide() {
-        this.howtoArray[this.indexSlide].style.display="none";
+        this.$howtoArray[this.indexSlide].style.display="none";
         this.indexSlide--;    
         if (this.indexSlide < 0) {
-            this.indexSlide = this.howtoArray.length-1;
+            this.indexSlide = this.$howtoArray.length-1;
         }
-        this.howtoArray[this.indexSlide].style.display="block";
+        this.$howtoArray[this.indexSlide].style.display="block";
     }
-
 }
 
 
