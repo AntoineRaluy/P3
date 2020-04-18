@@ -66,13 +66,14 @@ export default class BikeMap {
     displayStation(station) {
         const $infoStation = document.querySelector('#station-infos');
         $infoStation.style.display = "inline-block";
-        if (window.matchMedia("(min-width: 800px)").matches) {
-            this.$stationAlign.style.textAlign = "left" };
+        
         let status = station.status;
         sessionStorage.setItem('stationname', station.name);
         if (status === 'OPEN') {
             status = 'Ouverte';
             this.$userForm.style.display = "block";
+            if (window.matchMedia("(min-width: 800px)").matches) {
+                this.$stationAlign.style.textAlign = "left" };
             if (station.stands === 0) {
                 $infoStation.style.backgroundColor = "#F5F5F5";
             }
@@ -82,6 +83,8 @@ export default class BikeMap {
             status = 'Fermée';
             this.$userForm.style.display = "none";
             $infoStation.style.backgroundColor = "#fce9e9";
+            if (window.matchMedia("(min-width: 800px)").matches) {
+                this.$stationAlign.style.textAlign = "center" };
         };
         $infoStation.innerHTML = `<ul>
                                     <li><span class="infostats">Nom</span> : ${station.name}</li> 

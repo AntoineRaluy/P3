@@ -485,10 +485,6 @@ header {
         font-size: 7rem;
     }
 
-    #map-stations {
-        text-align: left;
-    }
-
     #map {
         height: 500px;
         margin-top: 5rem;
