@@ -34,7 +34,7 @@ export default class CanvasObject {
             this.mousePosition = this.getMposition(e);
             this.canvasResult();
         });
-        this.$canvas.addEventListener("mouseup", (e) => {
+        this.$canvas.addEventListener("mouseup", () => {
             this.draw = false;
         });
         this.$canvas.addEventListener("touchstart", (e) => {    // Stop touchpad scrolling
@@ -69,11 +69,11 @@ export default class CanvasObject {
             });
             this.$canvas.dispatchEvent(mouseEvent);
         });
-        this.$canvas.addEventListener("touchend", (e) => {
+        this.$canvas.addEventListener("touchend", () => {
             let mouseEvent = new MouseEvent("mouseup", {});
             this.$canvas.dispatchEvent(mouseEvent);
         });      
-        this.$clearButton.addEventListener("click", (e) => {    // Clear signature
+        this.$clearButton.addEventListener("click", () => {    // Clear signature
             this.clearCanvas();
             this.$checkButton.disabled = true;
             this.$checkButton.classList.remove('btcheck');
