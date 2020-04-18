@@ -1,6 +1,7 @@
 export default class CanvasObject {
-    constructor(canvasPosition) { //Paramètres du canvas
+    constructor(canvasPosition) { 
         this.$canvas = document.querySelector(canvasPosition);
+
         this.$checkButton = document.querySelector("#bt-check");
         this.$clearButton = document.querySelector("#bt-clear");
         this.$checkButton.classList.remove('btcheck');
@@ -9,18 +10,28 @@ export default class CanvasObject {
         this.ctx.strokeStyle = '#000000';
         this.ctx.lineWidth = 3;
 
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+            this.$canvas.width = 800;
+            this.$canvas.height = 300;
+        } else if (window.matchMedia("(min-width: 800px)").matches) {
+            this.$canvas.width = 700;
+            this.$canvas.height = 300;
+        } else {
+            this.$canvas.width = 300;
+            this.$canvas.height = 200;
+        }
+
         this.draw = false;
         this.mousePosition = {
             x: 0,
             y: 0
         };
         this.lastPosition = this.mousePosition;
-        this.$canvas.width = 300;
-        this.$canvas.height = 150;
+
         this.evenements();
     }
 
-    //Gestion des événements 
+    
     evenements() {
         //Souris
         this.$canvas.addEventListener("mousedown", (e) => {
@@ -38,11 +49,6 @@ export default class CanvasObject {
         this.$canvas.addEventListener("mouseup", (e) => {
             this.draw = false;
         });
-
-//         oCanvas.addEventListener("touchstart", downDrawligne);
-//   oCanvas.addEventListener("touchend", upDrawligne);
-//   oCanvas.addEventListener("touchmove", moveDrawligne); 
-
 
         // Stop scrolling (touch)
         this.$canvas.addEventListener("touchstart", (e) => {
@@ -90,7 +96,7 @@ export default class CanvasObject {
         });
 
 
-        //Effacer
+        // Effacer - Valider
         this.$clearButton.addEventListener("click", (e) => {
             this.clearCanvas()
             this.$checkButton.disabled = true;

@@ -1,6 +1,7 @@
 export default class Booking {
     constructor(bookingPosition) {
         this.$userForm = document.querySelector(bookingPosition);
+        this.$stationInfos = document.querySelector('#map-stations');
         this.$signingStep = document.querySelector('.lightbox-sign');
         this.$checkButton = document.querySelector('#bt-check');
         this.$closeBtn = document.querySelector('.fa-times');
@@ -18,7 +19,9 @@ export default class Booking {
 
         this.$checkButton.addEventListener("click", () => {
             this.displayBooking();   
+            this.$userForm.style.display = "none";
             this.$signingStep.style.display = "none";
+            this.$stationInfos.style.textAlign = "center";
             document.body.classList.remove("stopscroll");
             });
 
@@ -36,6 +39,7 @@ export default class Booking {
         let lstName = localStorage.getItem('lastname');
         let fstName = localStorage.getItem('firstname');
         let bstName = sessionStorage.getItem('stationname');
+        this.$infoBooking.style.display = "block";
         this.$infoBooking.innerHTML = `<hr>
                                 <p>Vélo réservé à la station :<br> <span class="infouser">${bstName}</span></p>
                                 <p>par <span class="infouser">${fstName} ${lstName}</span></p> 
@@ -70,7 +74,7 @@ export default class Booking {
                 timer = duration;
                 sessionStorage.clear();
                 this.$infoBooking.innerHTML =``;
-                this.$userForm.style.display = "none";
+                this.$infoBooking.style.display = "none";
                 clearInterval(interval);
             }
         }, 1000);

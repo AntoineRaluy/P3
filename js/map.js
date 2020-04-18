@@ -2,6 +2,7 @@ export default class BikeMap {
     constructor(mapPosition) {
         this.$mapElement = document.querySelector(mapPosition);
         this.$userForm = document.querySelector('#booking-details');
+        this.$stationAlign = document.querySelector('#map-stations');
         this.urlData = 'https://api.jcdecaux.com/vls/v3/stations?contract=Lyon&apiKey=0bfc09ea2231530610e8ebd057fa19cc18539930';
         this.leafletMap = L.map(this.$mapElement).setView([45.75, 4.85], 15);
         this.leafletMap.scrollWheelZoom.disable();
@@ -65,6 +66,8 @@ export default class BikeMap {
     displayStation(station) {
         const $infoStation = document.querySelector('#station-infos');
         $infoStation.style.display = "inline-block";
+        if (window.matchMedia("(min-width: 800px)").matches) {
+            this.$stationAlign.style.textAlign = "left" };
         let status = station.status;
         sessionStorage.setItem('stationname', station.name);
         if (status === 'OPEN') {
