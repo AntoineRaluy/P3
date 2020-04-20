@@ -82,6 +82,14 @@ export default class CanvasObject {
             this.clearCanvas();
             this.$checkButton.disabled = true;
             this.$checkButton.classList.remove('btcheck');
+            if (sessionStorage['booked']) {
+                this.stationName = sessionStorage.getItem('stationname-temp');
+                sessionStorage.setItem('stationname', this.stationName);
+                window.location.reload();
+                sessionStorage.removeItem('secondes');
+            }
+            this.booking = 1;
+            sessionStorage.setItem('booked', this.booking);
         });
     }
 

@@ -64,7 +64,9 @@ export default class BikeMap {
         const $infoStation = document.querySelector('#station-infos');
         $infoStation.style.display = "inline-block";
         let status = station.status;
-        sessionStorage.setItem('stationname', station.name);
+        if (sessionStorage['booked']) {
+            sessionStorage.setItem('stationname-temp', station.name);
+        } else { sessionStorage.setItem('stationname', station.name)};
         if (status === 'OPEN') {
             status = 'Ouverte';
             this.$userForm.style.display = "block";

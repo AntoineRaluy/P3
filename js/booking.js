@@ -29,6 +29,9 @@ export default class Booking {
             });
         document.querySelector('#user-lastname').value = localStorage.getItem('lastname');
         document.querySelector('#user-firstname').value = localStorage.getItem('firstname'); 
+        if (sessionStorage['booked']) {
+            this.displayBooking();
+        }
     }
 
     displayBooking() {
@@ -59,11 +62,22 @@ export default class Booking {
     startTimer(duration, display) {
         let timer = duration;
         let minutes, seconds;
+        if (sessionStorage['secondes']) {
+            minutes = sessionStorage.getItem('minutes');
+            seconds = sessionStorage.getItem('secondes');
+            timer = parseInt(minutes) * 60 + parseInt(seconds);
+            const dline = document.querySelector('.dline');
+            const bicycle = document.querySelector('.fa-bicycle');
+            dline.style.animation = `${timer}s linear trackline forwards`;
+            bicycle.style.animation = `${timer}s linear bikerun forwards`;
+        }
         const interval = setInterval(() => {
             minutes = Math.trunc(timer / 60);       // keep integer part
             seconds = timer % 60;                   // modulo 60
             minutes = minutes < 10 ? `0${minutes}` : minutes;       // display 0 if <10
             seconds = seconds < 10 ? `0${seconds}` : seconds;
+            sessionStorage.setItem('minutes', minutes);
+            sessionStorage.setItem('secondes', seconds);
             display.textContent = `${minutes}:${seconds}`;             
             if (--timer < 0) {
                 timer = duration;
