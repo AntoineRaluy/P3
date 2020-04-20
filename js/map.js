@@ -66,7 +66,7 @@ export default class BikeMap {
         let status = station.status;
         if (sessionStorage['booked']) {
             sessionStorage.setItem('stationname-temp', station.name);
-        } else { sessionStorage.setItem('stationname', station.name)};
+        } else {sessionStorage.setItem('stationname', station.name)};
         if (status === 'OPEN') {
             status = 'Ouverte';
             this.$userForm.style.display = "block";
